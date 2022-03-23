@@ -175,7 +175,8 @@ function init(array $data): array {
     $data['context'] = context_module::instance($data['cm']->id);
     $data['assign'] = new assign($data['context'], $data['cm'], $data['cm']->get_course());
 
-    $criteriatable = 'gradingform_'.$data['grademethod'].'_criteria';
+   // $criteriatable = 'gradingform_'.$data['grademethod'].'_criteria';
+    $criteriatable = 'gradingform_pfrbric_criteria';
     $data['criteriarecord'] = $DB->get_records_menu($criteriatable,
      ['definitionid' => (int) $data['gradingdefinition']->definitionid], null, 'id, description');
     $data = header_fields($data, $data['criteriarecord'], $data['course'], $data['cm'], $data['gradingdefinition']);

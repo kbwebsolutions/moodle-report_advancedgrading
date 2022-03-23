@@ -45,6 +45,11 @@ function report_advancedgrading_extend_navigation_module(navigation_node $naviga
             $navigation->add(get_string('rubricgrades', 'report_advancedgrading'), $url, navigation_node::TYPE_SETTING, null,
                     'rubricgrades');
         break;
+        case 'passfailrubric':
+            $url = new moodle_url('/report/advancedgrading/pfrbric.php', array('id' => $cm->course, 'modid' => $cm->id));
+            $navigation->add(get_string('rubricgrades', 'report_advancedgrading'), $url, navigation_node::TYPE_SETTING, null,
+                    'rubricgrades');
+        break;
         case 'guide':
             $url = new moodle_url('/report/advancedgrading/guide.php', array('id' => $cm->course, 'modid' => $cm->id));
             $navigation->add(get_string('guidegrades', 'report_advancedgrading'), $url, navigation_node::TYPE_SETTING, null,
