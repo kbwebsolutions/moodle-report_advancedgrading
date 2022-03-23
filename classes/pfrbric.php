@@ -96,7 +96,7 @@ WHERE cm.id = :assignid AND gin.status = 1
 ORDER BY lastname ASC, firstname ASC, userid ASC, criteria.sortorder ASC";
 
         $data = $DB->get_records_sql($sql, ['assignid' => $cm->id]);
-        $data = set_blindmarking($data, $assign, $cm);
+        //$data = set_blindmarking($data, $assign, $cm);
 
         return $data;
     }
