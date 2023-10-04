@@ -39,7 +39,6 @@ class pfrbric {
      * @return string
      */
     public function get_rows(array $data): string {
-        echo "<script>console.log('" . json_encode($data) . "');</script>";
         $rows = '';
         if (isset($data['students'])) {
             foreach ($data['students'] as $student) {
