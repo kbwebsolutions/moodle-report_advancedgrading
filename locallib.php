@@ -243,7 +243,8 @@ function get_grades(array $data, array $dbrecords): array {
             'overallfeedback' => $grade->overallfeedback,
             'grader' => $grade->grader,
             'timegraded' => $grade->modified,
-            'grade' => $formattedgrade
+            'grade' => $formattedgrade,
+            'wfstate' => $grade->wfstate
         ];
 
         foreach ($data['students'] as $student) {
@@ -323,6 +324,8 @@ function get_summary_cells($student) : string {
     $cell .= '<td>' . $student['gradeinfo']['grade'] . '</td>';
     $cell .= '<td>' . $student['gradeinfo']['grader'] . '</td>';
     $cell .= '<td>' . \userdate($student['gradeinfo']['timegraded'], "% %d %b %Y %I:%M %p") . '</td>';
+    $cell .= '<td>' . $student['gradeinfo']['wfstate'] . '</td>';
+
     return $cell;
 }
 /**

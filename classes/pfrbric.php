@@ -39,6 +39,7 @@ class pfrbric {
      * @return string
      */
     public function get_rows(array $data): string {
+        echo "<script>console.log('" . json_encode($data) . "');</script>";
         $rows = '';
         if (isset($data['students'])) {
             foreach ($data['students'] as $student) {
@@ -77,7 +78,7 @@ class pfrbric {
        stu.firstname, stu.lastname,
        CONCAT(stu.firstname, ' ', stu.lastname) AS username, stu.email, CONCAT(rubm.firstname, ' ', rubm.lastname) AS grader,
        gin.timemodified AS modified,
-       ctx.instanceid, ag.grade, asg.blindmarking, assign_comment.commenttext as overallfeedback
+       ctx.instanceid, ag.grade, asg.blindmarking, assign_comment.commenttext as overallfeedback, usrflg.workflowstate AS WFState
 FROM {assign} asg
          JOIN {course_modules} cm ON cm.instance = asg.id
          JOIN {context} ctx ON ctx.instanceid = cm.id
@@ -90,6 +91,7 @@ FROM {assign} asg
          JOIN {user} stu ON stu.id = ag.userid
          JOIN {user} rubm ON rubm.id = gin.raterid
          JOIN {gradingform_pfrbric_fillings} grf ON (grf.instanceid = gin.id)
+         JOIN {assign_user_flags} usrflg ON usrflg.assignment = asg.id AND usrflg.userid = stu.id
     AND (grf.criterionid = criteria.id)
 WHERE cm.id = :assignid AND gin.status = 1
   AND  stu.deleted = 0
@@ -99,5 +101,6 @@ ORDER BY lastname ASC, firstname ASC, userid ASC, criteria.sortorder ASC";
         //$data = set_blindmarking($data, $assign, $cm);
 
         return $data;
+
     }
 }

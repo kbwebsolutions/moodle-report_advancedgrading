@@ -52,3 +52,4 @@ $string['participant'] = 'participant';
 $string['rubricreportname'] = 'Rubric report';
 $string['guidereportname'] = 'Marking guide report';
 $string['nomarkedsubmissions'] = 'No marked submissions found';
+$string['workflowstatus'] = 'Workflow Status';
